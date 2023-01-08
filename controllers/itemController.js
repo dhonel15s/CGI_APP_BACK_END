@@ -51,6 +51,27 @@ module.exports.getItems = () => {
 
 };
 
+// GET SPECIFIC ITEM
+module.exports.getItemDetails = (itemId) => {
+
+	return Item.findById(itemId)
+	.then(result => {
+		if(result == null){
+			return {
+				status: false,
+				message: `Item not found.`,
+				details: result
+			}
+		}else{
+			return {
+				status: true,
+				message: `Item found.`,
+				details: result
+			}
+		}
+	});
+};
+
 
 // UPDATE ITEM
 module.exports.updateItem = (itemId, newData) => {

@@ -20,6 +20,12 @@ router.get("/all", (request, response) => {
 	.then(resultFromController => response.send(resultFromController));
 });
 
+// GET SPECIFIC ITEM
+router.get("/:itemId", (request, response) => {
+	itemController.getItemDetails(request.params.itemId)
+	.then(resultFromController => response.send(resultFromController));
+});
+
 // UPDATE ITEM
 router.put("/update/:itemId", (request, response) => {
 	itemController.updateItem(request.params.itemId, request.body)
